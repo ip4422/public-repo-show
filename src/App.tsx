@@ -1,72 +1,76 @@
-import React, { useState, useEffect } from 'react'
-import './App.css'
-import { Layout, Row, Col, Menu, Input } from 'antd'
+import React from 'react'
+// import React, { useState } from 'react'
+import './App.less'
+// import './App.css'
+import { Layout, Row, Col, Input, Space, Breadcrumb } from 'antd'
+import { GithubOutlined } from '@ant-design/icons'
 
+import ROUTES, { ApplicationRoutes } from './config/routes'
+import { RepoCard } from './components/RepoCard'
 const { Header, Content, Footer } = Layout
 const { Search } = Input
 
-const HOST_NAME = 'https://api.github.com'
-const API_GET_REPOS = '/users/ip4422/repos'
+// const HOST_NAME = 'https://api.github.com'
 
 function App() {
-  const [githubUserName, setGithubUserName] = useState('ip4422')
-  const [repos, setRepos] = useState('')
+  //   const [githubUserName, setGithubUserName] = useState('ip4422')
+  //   const [repos, setRepos] = useState('')
 
-  const fetchReposForUser = async (userName: string) => {
-    let response = await fetch(`${HOST_NAME}/users/${userName}/repos`)
-    const repo = await response.json()
-    console.log(`repo: `, repo)
-    setRepos(repo)
-  }
+  //   const fetchReposForUser = async (userName: string) => {
+  //     let response = await fetch(`${HOST_NAME}/users/${userName}/repos`)
+  //     const repo = await response.json()
+  //     console.log(`repo: `, repo)
+  //     setRepos(repo)
+  //   }
 
-  //   useEffect(() => {
-  //     if (githubUserName) {
-  //       const resp = fetchReposForUser(githubUserName)
-  //       console.log(`resp: `, resp)
-  //     }
-  //   }, [])
-
-  const handleSearch = (value: string, e: any) => {
-    fetchReposForUser(value)
-    console.log(`value: `, value)
-    console.log(`e: `, e)
-  }
+  //   const handleSearch = (value: string, e: any) => {
+  //     // fetchReposForUser(value)
+  //     console.log(`value: `, value)
+  //     console.log(`e: `, e)
+  //   }
 
   return (
-    <Layout className='layout'>
+    <Layout style={{ minHeight: '100vh' }}>
       <Header>
         <Row justify='start' align='middle' gutter={32}>
           <Col span={4}>
-            <Input.Group compact>
-              <Search
-                placeholder="Github's username"
-                // loading
-                // value={githubUserName}
-                // onChange={handleChangeUserName}
-                onSearch={handleSearch}
-              />
-            </Input.Group>
+            <Row justify='start' align='middle'>
+              <Space align='center'>
+                <GithubOutlined
+                  style={{ fontSize: '32px', color: '#fff', display: 'block' }}
+                />
+                <Search
+                  placeholder="Github's username"
+                  style={{ display: 'block' }}
+                  // loading
+                  // value={githubUserName}
+                  //   onSearch={handleSearch}
+                />
+              </Space>
+            </Row>
           </Col>
           <Col span={12}>
-            <Menu theme='dark' mode='horizontal' defaultSelectedKeys={['2']}>
-              <Menu.Item key='1'>nav 1</Menu.Item>
-              <Menu.Item key='2'>nav 2</Menu.Item>
-              <Menu.Item key='3'>nav 3</Menu.Item>
-            </Menu>
+            <Row justify='start' align='middle'>
+              <div style={{ height: '64px' }}>
+                <Space align='center'>
+                  <Breadcrumb style={{ color: '#fff' }}>
+                    <Breadcrumb.Item href=''>Application List</Breadcrumb.Item>
+                    <Breadcrumb.Item>Application</Breadcrumb.Item>
+                  </Breadcrumb>
+                </Space>
+              </div>
+            </Row>
           </Col>
         </Row>
       </Header>
       <Content style={{ padding: '20px 50px' }}>
-        Content
-        <div style={{ width: '300px' }}>
-          <Search
-            placeholder="Github's username"
-            allowClear
-            onSearch={() => {}}
-          />
-        </div>
+        <ApplicationRoutes routes={ROUTES} />
+        <RepoCard title='simple title' description='simple description' />
+        {/* <Empty /> */}
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Footer</Footer>
+      <Footer style={{ textAlign: 'center', position: 'sticky', bottom: '0' }}>
+        Footer
+      </Footer>
     </Layout>
   )
 }
