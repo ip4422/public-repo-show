@@ -9,7 +9,6 @@ interface CardProps {
 }
 
 const { Title, Text } = Typography
-// const { Title, Text, Link } = Typography
 
 export const RepoCard = (props: CardProps): JSX.Element => {
   const { title = '', description = '' } = props
@@ -19,9 +18,10 @@ export const RepoCard = (props: CardProps): JSX.Element => {
         <Link to={'#'} component={Typography.Link}>
           {title}
         </Link>
-        {/* <Link href={'#'}>{title}</Link> */}
       </Title>
       <Text>{description}</Text>
     </Card>
   )
 }
+
+export default RepoCard

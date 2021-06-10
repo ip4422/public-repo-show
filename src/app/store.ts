@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import repos from '../ducks/repos'
+import repos from '../ducks/repos.duck'
 
 const store = configureStore({
   reducer: {
@@ -10,7 +10,7 @@ const store = configureStore({
 
 // Infer the `RootState` type from the store
 export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+// Inferred type: {repos: ReposState}
 export type AppDispatch = typeof store.dispatch
 
 export default store

@@ -1,4 +1,5 @@
 import React from 'react'
+// import { useDispatch } from 'react-redux'
 // import React, { useState } from 'react'
 import './App.less'
 // import './App.css'
@@ -6,28 +7,19 @@ import { Layout, Row, Col, Input, Space, Breadcrumb } from 'antd'
 import { GithubOutlined } from '@ant-design/icons'
 
 import ROUTES, { ApplicationRoutes } from './config/routes'
-import { RepoCard } from './components/RepoCard'
+import { RepoCard } from './components'
+import { fetchRepos } from './ducks'
+import { useAppDispatch } from './app/hooks'
+
 const { Header, Content, Footer } = Layout
 const { Search } = Input
 
-// const HOST_NAME = 'https://api.github.com'
-
 function App() {
-  //   const [githubUserName, setGithubUserName] = useState('ip4422')
-  //   const [repos, setRepos] = useState('')
+  const dispatch = useAppDispatch()
 
-  //   const fetchReposForUser = async (userName: string) => {
-  //     let response = await fetch(`${HOST_NAME}/users/${userName}/repos`)
-  //     const repo = await response.json()
-  //     console.log(`repo: `, repo)
-  //     setRepos(repo)
-  //   }
-
-  //   const handleSearch = (value: string, e: any) => {
-  //     // fetchReposForUser(value)
-  //     console.log(`value: `, value)
-  //     console.log(`e: `, e)
-  //   }
+  const handleSearch = (value: string) => {
+    dispatch(fetchRepos(value))
+  }
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -44,7 +36,7 @@ function App() {
                   style={{ display: 'block' }}
                   // loading
                   // value={githubUserName}
-                  //   onSearch={handleSearch}
+                  onSearch={handleSearch}
                 />
               </Space>
             </Row>
