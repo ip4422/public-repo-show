@@ -1,2 +1,2 @@
-export { Repos } from './Repos'
+export { RepoListContainer } from './RepoList'
 export { Repo } from './Repo'

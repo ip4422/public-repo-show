@@ -8,7 +8,7 @@ import { RepoCard } from './RepoCard'
 it('should render Empty Card component', async () => {
   const history = createMemoryHistory()
   const props = {
-    title: 'example title',
+    name: 'example title',
     description: 'just description'
   }
   render(

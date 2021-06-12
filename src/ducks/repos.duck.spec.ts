@@ -1,7 +1,8 @@
 import reducer, {
   setUserId,
   fetchRepos,
-  LoadingStatus
+  LoadingStatus,
+  Repo
 } from './repos.duck'
 
 const initialState = {
@@ -12,20 +13,15 @@ const initialState = {
 
 const repoContent = [
   {
-    avatar_url: 'https://www.url1.com',
     name: 'testName1',
     description: 'test description 1'
   },
   {
-    avatar_url: 'https://www.url2.com',
     name: 'testName2',
     description: 'test description 2'
   }
 ]
 
-beforeEach(() => {
-  fetch.resetMocks()
-})
 
 describe('repos slice', () => {
   it('should return the initial state', () => {

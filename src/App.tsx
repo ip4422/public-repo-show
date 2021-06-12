@@ -1,25 +1,40 @@
-import React from 'react'
-// import { useDispatch } from 'react-redux'
-// import React, { useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './App.less'
-// import './App.css'
-import { Layout, Row, Col, Input, Space, Breadcrumb } from 'antd'
+import { Layout, Row, Col, Input, Space } from 'antd'
 import { GithubOutlined } from '@ant-design/icons'
+import { useLocation } from 'react-router-dom'
 
 import ROUTES, { ApplicationRoutes } from './config/routes'
-import { RepoCard } from './components'
-import { fetchRepos } from './ducks'
+import { fetchRepos, setUserId } from './ducks'
 import { useAppDispatch } from './app/hooks'
+import { BreadcrumbsContainer } from './components'
+import { getRoutesState } from './helpers'
 
 const { Header, Content, Footer } = Layout
 const { Search } = Input
 
 function App() {
+  const firstRender = useRef(true)
   const dispatch = useAppDispatch()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (firstRender.current) {
+      const { userId } = getRoutesState(location.pathname)
+      if (userId) {
+        dispatch(setUserId(userId))
+        dispatch(fetchRepos(userId))
+      }
+    }
+    firstRender.current = false
+  }, [location, dispatch])
 
   const handleSearch = (value: string) => {
+    dispatch(setUserId(value))
     dispatch(fetchRepos(value))
   }
+
+  // TODO: add favicon
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -45,10 +60,7 @@ function App() {
             <Row justify='start' align='middle'>
               <div style={{ height: '64px' }}>
                 <Space align='center'>
-                  <Breadcrumb style={{ color: '#fff' }}>
-                    <Breadcrumb.Item href=''>Application List</Breadcrumb.Item>
-                    <Breadcrumb.Item>Application</Breadcrumb.Item>
-                  </Breadcrumb>
+                  <BreadcrumbsContainer />
                 </Space>
               </div>
             </Row>
@@ -57,11 +69,9 @@ function App() {
       </Header>
       <Content style={{ padding: '20px 50px' }}>
         <ApplicationRoutes routes={ROUTES} />
-        <RepoCard title='simple title' description='simple description' />
-        {/* <Empty /> */}
       </Content>
       <Footer style={{ textAlign: 'center', position: 'sticky', bottom: '0' }}>
-        Footer
+        Application for displaying Github user's public repositories
       </Footer>
     </Layout>
   )

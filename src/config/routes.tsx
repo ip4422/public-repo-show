@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom' // <-- New code
 
-import { Repos } from '../pages'
+import { RepoListContainer } from '../pages'
 import { Repo } from '../pages'
 
 /**
@@ -32,10 +32,19 @@ interface RoutesProps {
   routes: RouteItem[]
 }
 
-const ROUTES: RouteItem[] = [
-  { path: '/', key: 'APP_ROOT', exact: true, component: Repos },
-  { path: '/:userid',  exact: true, key: 'REPOS_ROOT', component: Repos },
-  { path: '/:userid/:repoid',  exact: true, key: 'REPO_PAGE', component: Repo },
+// export const routesParamsList = ['/:userId', '/:userId/:repoId']
+export const REPOS_ROOT_KEY = 'REPOS_ROOT_KEY'
+export const REPO_PAGE_KEY = 'REPO_PAGE_KEY'
+
+export const ROUTES: RouteItem[] = [
+  { path: '/', key: 'APP_ROOT', exact: true, component: RepoListContainer },
+  {
+    path: '/:userId',
+    exact: true,
+    key: REPOS_ROOT_KEY,
+    component: RepoListContainer
+  },
+  { path: '/:userId/:repoId', key: REPO_PAGE_KEY, component: Repo }
 ]
 
 export default ROUTES

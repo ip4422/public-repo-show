@@ -8,7 +8,7 @@ interface RepoProps {
 export const Repo = (props: RepoProps): JSX.Element => {
   return (
     <div>
-      Repo
+      {/* Repo */}
       <Empty />
     </div>
   )
