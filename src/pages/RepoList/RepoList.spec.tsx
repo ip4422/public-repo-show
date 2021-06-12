@@ -7,12 +7,12 @@ import RepoList from './RepoList'
 
 const repoContent = [
   {
-    avatar_url: 'https://www.url1.com',
+    full_name: 'ip4422/shop-app',
     name: 'testName1',
     description: 'test description 1'
   },
   {
-    avatar_url: 'https://www.url2.com',
+    full_name: 'ip4422/test1',
     name: 'testName2',
     description: 'test description 2'
   }

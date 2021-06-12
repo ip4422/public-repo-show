@@ -32,7 +32,6 @@ interface RoutesProps {
   routes: RouteItem[]
 }
 
-// export const routesParamsList = ['/:userId', '/:userId/:repoId']
 export const REPOS_ROOT_KEY = 'REPOS_ROOT_KEY'
 export const REPO_PAGE_KEY = 'REPO_PAGE_KEY'
 
@@ -46,8 +45,6 @@ export const ROUTES: RouteItem[] = [
   },
   { path: '/:userId/:repoId', key: REPO_PAGE_KEY, component: Repo }
 ]
-
-export default ROUTES
 
 /**
  * Render a route with potential sub routes

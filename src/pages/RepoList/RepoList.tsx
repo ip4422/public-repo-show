@@ -7,13 +7,14 @@ interface RepoListProps {
   repos: Repo[]
 }
 
-export const RepoList = ({ repos = []}: RepoListProps): JSX.Element => {
+export const RepoList = ({ repos = [] }: RepoListProps): JSX.Element => {
   return (
     <>
       {repos.map(repo => (
         <RepoCard
-          key={`key-for-${repo.name}`}
+          key={`key-for-${repo.full_name}`}
           name={repo.name}
+          link={repo.full_name}
           description={repo.description}
         />
       ))}

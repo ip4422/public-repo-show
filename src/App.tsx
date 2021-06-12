@@ -1,30 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import './App.less'
 import { Layout } from 'antd'
-import { useLocation } from 'react-router-dom'
 
-import ROUTES, { ApplicationRoutes } from './config/routes'
-import { fetchRepos, setUserId } from './ducks'
-import { useAppDispatch } from './app/hooks'
 import { HeaderContainer } from './components'
-import { getRoutesState } from './helpers'
+import { ROUTES, ApplicationRoutes } from './config/routes'
 
 function App() {
-  const firstRender = useRef(true)
-  const dispatch = useAppDispatch()
-  const location = useLocation()
-
-  useEffect(() => {
-    if (firstRender.current) {
-      const { userId } = getRoutesState(location.pathname)
-      if (userId) {
-        dispatch(setUserId(userId))
-        dispatch(fetchRepos(userId))
-      }
-    }
-    firstRender.current = false
-  }, [location, dispatch])
-
   // TODO: add favicon
 
   return (

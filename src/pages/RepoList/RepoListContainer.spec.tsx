@@ -6,7 +6,7 @@ import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
 import RepoListContainer from './RepoListContainer'
-import { LoadingStatus } from '../../ducks'
+import { LoadingStatus, Repo } from '../../ducks'
 
 const initialState = {
   loading: LoadingStatus.idle,
@@ -17,10 +17,12 @@ const initialState = {
 const repoContent = [
   {
     name: 'testName1',
+    full_name: 'testName1',
     description: 'test description 1'
   },
   {
     name: 'testName2',
+    full_name: 'testName2',
     description: 'test description 2'
   }
 ]
@@ -57,7 +59,7 @@ describe('rendering with store', () => {
 
     repoComponent = screen.getByRole('link', { name: /testName2/i })
     expect(repoComponent).toBeInTheDocument()
-    
+
     repoComponent = screen.getByText(/test description 2/i)
     expect(repoComponent).toBeInTheDocument()
   })

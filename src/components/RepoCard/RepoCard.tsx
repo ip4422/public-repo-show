@@ -11,11 +11,11 @@ interface CardProps {
 const { Title, Text } = Typography
 
 export const RepoCard = (props: CardProps): JSX.Element => {
-  const { name = '', description = '' } = props
+  const { name = '', description = '', link = '' } = props
   return (
     <Card bordered={false} style={{ width: '100%' }}>
       <Title level={4}>
-        <Link to={'#'} component={Typography.Link}>
+        <Link to={link} component={Typography.Link}>
           {name}
         </Link>
       </Title>

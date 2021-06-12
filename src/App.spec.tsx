@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { ThunkMiddleware } from '@reduxjs/toolkit'
 import configureMockStore from 'redux-mock-store'
 
-import { LoadingStatus } from './ducks'
+import { LoadingStatus, Repo } from './ducks'
 import App from './App'
 
 const initialState = {

@@ -26,12 +26,12 @@ export const fetchRepos = createAsyncThunk<
  * Repository info
  * @typedef Repo
  * @type {object}
- * @property {string} avatar_url - URL of User avatar
+ * @property {string} full_name - full name of repository (use as local link)
  * @property {string} name -  repository name
  * @property {string} description - repository description
  */
 export type Repo = {
-  avatar_url: string
+  full_name: string
   name: string
   description: string
 }
@@ -52,7 +52,7 @@ export enum LoadingStatus {
  * @property {string} userId - user name for fetching repositories
  * @property {Repo[]} repos - repositories list for current user
  */
-interface ReposState {
+export interface ReposState {
   loading: LoadingStatus
   error?: string
   userId?: string

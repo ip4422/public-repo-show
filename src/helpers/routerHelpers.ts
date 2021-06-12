@@ -14,9 +14,8 @@ export type RoutesParams = {
 }
 
 const userIdPath =
-  ROUTES?.find(route => route.key === REPOS_ROOT_KEY)?.path || ''
-const repoIdPath =
-  ROUTES?.find(route => route.key === REPO_PAGE_KEY)?.path || ''
+  ROUTES.find(route => route.key === REPOS_ROOT_KEY)?.path || ''
+const repoIdPath = ROUTES.find(route => route.key === REPO_PAGE_KEY)?.path || ''
 /**
  * List of all possible routes params for parsing on app initialization
  * to fetch data if we starts from some known route

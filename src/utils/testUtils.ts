@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import repos from '../ducks/repos.duck'
+import repos, { ReposState } from '../ducks/repos.duck'
 
 const middlewareEnhancer = applyMiddleware(thunkMiddleware)
 
@@ -11,5 +11,5 @@ const middlewareEnhancer = applyMiddleware(thunkMiddleware)
  * @param {object} initialState  - Initial state for store
  * @returns {Store} - Redux store
  */
-export const storeFactory = initialState =>
+export const storeFactory = (initialState: ReposState) =>
   createStore(repos, initialState, middlewareEnhancer)
