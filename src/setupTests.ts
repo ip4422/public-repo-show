@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+import fetchMock from 'jest-fetch-mock'
 
 // Declaration to solve problems:
 // 1. TypeError: window.matchMedia is not a function
@@ -12,3 +13,5 @@ global.matchMedia =
       removeListener: jest.fn()
     }
   }
+
+fetchMock.enableMocks()

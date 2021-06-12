@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store'
 import { render, screen } from '@testing-library/react'
-import { ThunkMiddleware } from '@reduxjs/toolkit'
+// import { ThunkMiddleware } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
@@ -25,7 +25,7 @@ const repoContent = [
   }
 ]
 
-const mockStore = configureMockStore(ThunkMiddleware)
+const mockStore = configureMockStore()
 
 const renderWithInitialState = state => {
   const history = createMemoryHistory()
@@ -43,7 +43,7 @@ const renderWithInitialState = state => {
 describe('rendering with store', () => {
   it('should render with initial state without error', () => {
     renderWithInitialState()
-    const emptyComponent = screen.getByText(/No Data/i)
+    const emptyComponent = screen.getByText(/Not Found/i)
     expect(emptyComponent).toBeInTheDocument()
   })
 
