@@ -43,6 +43,23 @@ export enum LoadingStatus {
   failed = 'failed'
 }
 
+export enum RepoContetItemType {
+  dir = 'dir',
+  file = 'file'
+}
+
+/**
+ * Repository cintent item
+ * @typedef RepoContent
+ * @type {object}
+ * @property {string} name - item name (file or folder name)
+ * @property {RepoContetItem} type -  item type
+ */
+export type RepoContent = {
+  name: string
+  type: RepoContetItemType
+}
+
 /**
  * Repository state
  * @typedef ReposState

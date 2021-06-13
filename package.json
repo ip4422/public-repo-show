@@ -38,6 +38,9 @@
     ]
   },
   "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx|js|jsx)$": "<rootDir>/node_modules/babel-jest"
+    },
     "transformIgnorePatterns": [
       "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
     ]

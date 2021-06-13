@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom' // <-- New code
 
 import { RepoListContainer } from '../pages'
-import { Repo } from '../pages'
+import { RepoContainer } from '../pages'
 
 /**
  * @typedef RouteItem
@@ -35,6 +35,9 @@ interface RoutesProps {
 export const REPOS_ROOT_KEY = 'REPOS_ROOT_KEY'
 export const REPO_PAGE_KEY = 'REPO_PAGE_KEY'
 
+/**
+ * 
+*/
 export const ROUTES: RouteItem[] = [
   { path: '/', key: 'APP_ROOT', exact: true, component: RepoListContainer },
   {
@@ -43,7 +46,7 @@ export const ROUTES: RouteItem[] = [
     key: REPOS_ROOT_KEY,
     component: RepoListContainer
   },
-  { path: '/:userId/:repoId', key: REPO_PAGE_KEY, component: Repo }
+  { path: '/:userId/:repoId', key: REPO_PAGE_KEY, component: RepoContainer }
 ]
 
 /**
