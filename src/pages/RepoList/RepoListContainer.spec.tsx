@@ -1,18 +1,11 @@
 import configureMockStore from 'redux-mock-store'
 import { render, screen } from '@testing-library/react'
-// import { ThunkMiddleware } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
 import RepoListContainer from './RepoListContainer'
-import { LoadingStatus, Repo } from '../../ducks'
-
-const initialState = {
-  loading: LoadingStatus.idle,
-  userId: '',
-  repos: [] as Repo[]
-}
+import { initialState } from '../../ducks'
 
 const repoContent = [
   {

@@ -1,17 +1,24 @@
 import reducer, {
-  setUserId,
   fetchRepos,
+  fetchRepoContent,
+  fetchRepoReadme,
   LoadingStatus,
-  Repo
+  RepoContetItemType,
+  initialState
 } from './repos.duck'
 
-const initialState = {
-  loading: LoadingStatus.idle,
-  userId: '',
-  repos: [] as Repo[]
-}
-
 const repoContent = [
+  {
+    name: 'testName1',
+    type: RepoContetItemType.dir
+  },
+  {
+    name: 'testName2',
+    type: RepoContetItemType.file
+  }
+]
+
+const repoList = [
   {
     name: 'testName1',
     description: 'test description 1'
@@ -22,45 +29,114 @@ const repoContent = [
   }
 ]
 
+it('should return the initial state', () => {
+  const result = reducer(undefined, {})
+  expect(result).toEqual(initialState)
+})
 
-describe('repos slice', () => {
-  it('should return the initial state', () => {
-    const result = reducer(undefined, {})
-    expect(result).toEqual(initialState)
-  })
-
-  it('should should set userId', () => {
-    const testUserId = 'newUser'
-    const result = reducer(undefined, setUserId(testUserId))
-    expect(result.userId).toBe(testUserId)
-  })
-
-  it('should set repos and loadign status to "succeeded"', async () => {
-    const action = { type: fetchRepos.fulfilled.type, payload: repoContent }
+describe('repos', () => {
+  it('should set repos and reposLoading status to "succeeded"', async () => {
+    const action = { type: fetchRepos.fulfilled.type, payload: repoList }
     const state = reducer(undefined, action)
     expect(state).toEqual({
       ...initialState,
-      repos: repoContent,
-      loading: LoadingStatus.succeeded
+      repos: repoList,
+      reposLoading: LoadingStatus.succeeded
     })
   })
 
-  it('should set loadign status "pending"', async () => {
+  it('should set reposLoading status "pending"', async () => {
     const action = { type: fetchRepos.pending.type }
     const state = reducer(undefined, action)
     expect(state).toEqual({
       ...initialState,
-      loading: LoadingStatus.pending
+      reposLoading: LoadingStatus.pending
     })
   })
 
-  it('should set loadign status "failed"', async () => {
+  it('should set reposLoading status "failed"', async () => {
     const action = { type: fetchRepos.rejected.type, payload: 'loading error' }
     const state = reducer(undefined, action)
     expect(state).toEqual({
       ...initialState,
       error: 'loading error',
-      loading: LoadingStatus.failed
+      reposLoading: LoadingStatus.failed
+    })
+  })
+})
+
+describe('repoContent', () => {
+  it('should set repoContent and repoLoading status to "succeeded"', async () => {
+    const action = {
+      type: fetchRepoContent.fulfilled.type,
+      payload: repoContent
+    }
+    const state = reducer(undefined, action)
+    expect(state).toEqual({
+      ...initialState,
+      repoContent,
+      repoLoading: LoadingStatus.succeeded
+    })
+  })
+
+  it('should set repoLoading status "pending"', async () => {
+    const action = { type: fetchRepoContent.pending.type }
+    const state = reducer(undefined, action)
+    expect(state).toEqual({
+      ...initialState,
+      repoLoading: LoadingStatus.pending
+    })
+  })
+
+  it('should set repoLoading status "failed"', async () => {
+    const action = {
+      type: fetchRepoContent.rejected.type,
+      payload: 'loading error'
+    }
+    const state = reducer(undefined, action)
+    expect(state).toEqual({
+      ...initialState,
+      error: 'loading error',
+      repoLoading: LoadingStatus.failed
+    })
+  })
+})
+
+describe('repoReadme', () => {
+  const readme = { content: 'test readme value' }
+
+  it('should set repoReadme and readmeLoading status to "succeeded"', async () => {
+    const action = {
+      type: fetchRepoReadme.fulfilled.type,
+      payload: readme
+    }
+    const state = reducer(undefined, action)
+    expect(state).toEqual({
+      ...initialState,
+      repoReadme: atob(readme.content),
+      readmeLoading: LoadingStatus.succeeded
+    })
+  })
+
+  it('should set readmeLoading status "pending"', async () => {
+    const action = { type: fetchRepoReadme.pending.type }
+    const state = reducer(undefined, action)
+    expect(state).toEqual({
+      ...initialState,
+      readmeLoading: LoadingStatus.pending
+    })
+  })
+
+  it('should set readmeLoading status "failed"', async () => {
+    const action = {
+      type: fetchRepoReadme.rejected.type,
+      payload: 'loading error'
+    }
+    const state = reducer(undefined, action)
+    expect(state).toEqual({
+      ...initialState,
+      error: 'loading error',
+      readmeLoading: LoadingStatus.failed
     })
   })
 })

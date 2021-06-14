@@ -9,7 +9,7 @@ module.exports = {
           lessOptions: {
             modifyVars: {
               '@layout-header-background': '#24292e',
-              '@list-header-background': '#f1f8ff',
+              '@layout-body-background': '#fff',
               '@breadcrumb-base-color': '#fff',
               '@breadcrumb-last-item-color': '#fff',
               '@breadcrumb-font-size': 'ceil(@font-size-base * 1.42)',

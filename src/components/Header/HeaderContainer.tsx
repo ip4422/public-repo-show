@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
-import { fetchRepos, setUserId, LoadingStatus } from '../../ducks'
+import { fetchRepos, LoadingStatus } from '../../ducks'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import Header from './Header'
-import { getRoutesState } from '../../helpers'
+import { getRouteParams } from '../../helpers'
 
 const HeaderContainer = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const loading = useAppSelector(
-    state => state.repos.loading === LoadingStatus.pending
+    state => state.repos.reposLoading === LoadingStatus.pending
   )
-  const userId = useAppSelector(state => state.repos.userId)
-  const [searchValue, setSearchValue] = useState(userId)
+  const [searchValue, setSearchValue] = useState('')
   const history = useHistory()
   const location = useLocation()
-
-  useEffect(() => {
-    // wait for userId from redux. On app init it may already be set
-    setSearchValue(userId)
-  }, [userId])
 
   const handleSearch = (value: string) => {
     // fetch dispatched on location change
@@ -27,9 +21,8 @@ const HeaderContainer = (): JSX.Element => {
   }
 
   useEffect(() => {
-    const { userId: userName } = getRoutesState(location.pathname)
+    const { userId: userName } = getRouteParams(location.pathname)
     if (userName) {
-      dispatch(setUserId(userName))
       dispatch(fetchRepos(userName))
       setSearchValue(userName)
     }

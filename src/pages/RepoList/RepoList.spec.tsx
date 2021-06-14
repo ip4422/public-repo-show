@@ -5,43 +5,50 @@ import { createMemoryHistory } from 'history'
 
 import RepoList from './RepoList'
 
-const repoContent = [
-  {
-    full_name: 'ip4422/shop-app',
-    name: 'testName1',
-    description: 'test description 1'
-  },
-  {
-    full_name: 'ip4422/test1',
-    name: 'testName2',
-    description: 'test description 2'
-  }
-]
+const defaultProps = {
+  repos: [
+    {
+      full_name: 'ip4422/shop-app',
+      name: 'testName1',
+      description: 'test description 1'
+    },
+    {
+      full_name: 'ip4422/test1',
+      name: 'testName2',
+      description: 'test description 2'
+    }
+  ],
+  loading: false
+}
+
+const renderRepoList = props => {
+  const history = createMemoryHistory()
+  render(
+    <Router history={history}>
+      <RepoList {...props} />
+    </Router>
+  )
+  return history
+}
 
 describe('rendering RepoList', () => {
-  const history = createMemoryHistory()
   // const props = {}
 
   it('should render RepoList without any props without errors', () => {
-    render(
-      <Router history={history}>
-        <RepoList />
-      </Router>
-    )
+    renderRepoList()
+    let emptyComponent = screen.getByText('Not found')
+    expect(emptyComponent).toBeInTheDocument()
   })
 
   it('should render 2 items list', () => {
-    render(
-      <Router history={history}>
-        <RepoList repos={repoContent} />
-      </Router>
-    )
+    renderRepoList(defaultProps)
+
     let repoListComponent = screen.getByRole('link', {
-      name: repoContent[0].name
+      name: defaultProps.repos[0].name
     })
     expect(repoListComponent).toBeInTheDocument()
     repoListComponent = screen.getByRole('link', {
-      name: repoContent[1].name
+      name: defaultProps.repos[1].name
     })
     expect(repoListComponent).toBeInTheDocument()
   })

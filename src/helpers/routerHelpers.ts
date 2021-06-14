@@ -8,7 +8,7 @@ import { ROUTES, REPO_PAGE_KEY, REPOS_ROOT_KEY } from '../config/routes'
  * @property {string} userId - current userId
  * @property {string} repoId -  current repoId
  */
-export type RoutesParams = {
+export type RouteParams = {
   userId?: string
   repoId?: string
 }
@@ -25,19 +25,19 @@ const allRoutesToList = [userIdPath, repoIdPath]
 /**
  * Parsing route params
  * @param {string} pathname - current location pathname (current route)
- * @returns {RoutesParams} - all params for current route
+ * @returns {RouteParams} - all params for current route
  */
-export const getRoutesState = (pathname: string): RoutesParams => {
+export const getRouteParams = (pathname: string): RouteParams => {
   // check for userId first. We can repform on routes
   const { userId = undefined } = (matchPath(pathname, {
     path: allRoutesToList
-  })?.params as RoutesParams) || { userId: undefined, repoId: undefined }
+  })?.params as RouteParams) || { userId: undefined, repoId: undefined }
 
   // if we have userId than can exist repoId
   if (userId) {
     const { repoId } = (matchPath(pathname, {
       path: repoIdPath
-    })?.params as RoutesParams) || { userId: undefined, repoId: undefined }
+    })?.params as RouteParams) || { userId: undefined, repoId: undefined }
     return { userId, repoId }
   }
   return { userId, repoId: undefined }

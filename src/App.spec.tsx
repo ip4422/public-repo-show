@@ -6,20 +6,14 @@ import { Provider } from 'react-redux'
 import { ThunkMiddleware } from '@reduxjs/toolkit'
 import configureMockStore from 'redux-mock-store'
 
-import { LoadingStatus, Repo } from './ducks'
+import { initialState } from './ducks'
 import App from './App'
-
-const initialState = {
-  loading: LoadingStatus.idle,
-  userId: '',
-  repos: [] as Repo[]
-}
 
 const mockStore = configureMockStore(ThunkMiddleware)
 
 const store = mockStore({ repos: initialState })
 
-test('renders learn react link', () => {
+test('render App without errors', () => {
   const history = createMemoryHistory()
   render(
     <Router history={history}>

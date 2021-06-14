@@ -6,13 +6,6 @@ import { Router } from 'react-router-dom'
 
 import { storeFactory } from '../../utils/testUtils'
 import HeaderContainer from './HeaderContainer'
-import { LoadingStatus } from '../../ducks'
-
-const initialState = {
-  loading: LoadingStatus.idle,
-  userId: '',
-  repos: [] as Repo[]
-}
 
 const repoContent = [
   {
@@ -25,10 +18,11 @@ const repoContent = [
   }
 ]
 
-const renderWithInitialState = state => {
+const githubUserName = 'testName'
+
+const renderHeaderContainer = state => {
   const history = createMemoryHistory()
-  const setupState = { ...initialState, ...(state && state) }
-  const store = storeFactory(setupState)
+  const store = storeFactory(state)
   render(
     <Router history={history}>
       <Provider store={store}>
@@ -43,8 +37,8 @@ describe('should render without errors', () => {
     fetch.resetMocks()
   })
 
-  it('should render with initial state without errors', () => {
-    renderWithInitialState()
+  it('should render with empty state without errors', () => {
+    renderHeaderContainer()
     const searchElement = screen.getByPlaceholderText("Github's username")
     expect(searchElement).toHaveValue('')
   })
@@ -52,19 +46,10 @@ describe('should render without errors', () => {
   it('userId should be passed to store and repositories fetched', () => {
     fetch.mockResponseOnce(JSON.stringify(repoContent))
 
-    const history = createMemoryHistory()
-    const store = storeFactory(initialState)
-
-    render(
-      <Router history={history}>
-        <Provider store={store}>
-          <HeaderContainer />
-        </Provider>
-      </Router>
-    )
+    renderHeaderContainer()
 
     let searchElement = screen.getByPlaceholderText("Github's username")
-    userEvent.type(searchElement, 'ip4422')
+    userEvent.type(searchElement, githubUserName)
 
     const searchButton = screen.getByRole('button')
     userEvent.click(searchButton)
@@ -72,8 +57,6 @@ describe('should render without errors', () => {
     expect(fetch).toHaveBeenCalledTimes(1)
 
     searchElement = screen.getByPlaceholderText("Github's username")
-    expect(searchElement).toHaveValue('ip4422')
-
-    expect(store.getState().userId).toEqual('ip4422')
+    expect(searchElement).toHaveValue(githubUserName)
   })
 })

@@ -15,17 +15,25 @@ const repoItems = [
   }
 ]
 const header = 'test header'
+const readmeHeader = 'REAMDE.md'
 
 describe('rendering Repo', () => {
   it('should render Repo without any props without errors', () => {
     render(<Repo />)
+    let emptyComponent = screen.getByText('Not found')
+    expect(emptyComponent).toBeInTheDocument()
   })
 
-  it('should render Repo with 2 items', () => {
+  it('should render Repo with 2 items and readme', () => {
     render(<Repo items={repoItems} header={header} />)
+
     let repoItemComponent = screen.getByText(repoItems[0].name)
     expect(repoItemComponent).toBeInTheDocument()
+
     repoItemComponent = screen.getByText(repoItems[1].name)
+    expect(repoItemComponent).toBeInTheDocument()
+
+    repoItemComponent = screen.getByText(readmeHeader)
     expect(repoItemComponent).toBeInTheDocument()
   })
 })
