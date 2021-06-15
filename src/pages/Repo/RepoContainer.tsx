@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { fetchRepoContent, fetchRepoReadme, LoadingStatus } from '../../store'
-import { RepoContent } from '../../store'
-import { useAppSelector, useAppDispatch } from '../../utils/hooks'
+import { fetchRepoContent, fetchRepoReadme, LoadingStatus } from '@root/store'
+import { RepoContent } from '@root/store'
+import { useAppSelector, useAppDispatch } from '@root/utils/hooks'
 import { Repo } from './'
-import { RouteParams } from '../../helpers'
+import { RouteParams } from '@root/helpers'
 
 export const RepoContainer = () => {
   const dispatch = useAppDispatch()

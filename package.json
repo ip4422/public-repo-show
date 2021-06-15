@@ -41,7 +41,10 @@
   "jest": {
     "transformIgnorePatterns": [
       "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^@root/(.+)": "<rootDir>/src/$1"
+    }
   },
   "browserslist": {
     "production": [
@@ -57,6 +60,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
+    "craco-alias": "^3.0.1",
     "jest-fetch-mock": "^3.0.3",
     "redux-mock-store": "^1.5.4"
   }

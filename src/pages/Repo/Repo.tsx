@@ -3,7 +3,7 @@ import { List, Typography, Card, Empty, Spin } from 'antd'
 import ReactMarkdown from 'react-markdown'
 import './repo.css'
 
-import { RepoContent } from '../../store'
+import { RepoContent } from '@root/store'
 import { RepoItem } from './'
 
 interface RepoProps {

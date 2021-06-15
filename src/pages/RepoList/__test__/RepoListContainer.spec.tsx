@@ -5,7 +5,7 @@ import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
 import { RepoListContainer } from '../'
-import { initialState } from '../../../store'
+import { initialState } from '@root/store'
 
 const repoContent = [
   {

@@ -3,9 +3,9 @@ import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
-import { store } from '../../../app'
+import { store } from '@root/app'
 import { RepoContainer } from '../'
-import { RepoContetItemType } from '../../../store'
+import { RepoContetItemType } from '@root/store'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts

@@ -1,7 +1,16 @@
 const CracoLessPlugin = require('craco-less')
+const CracoAlias = require('craco-alias')
 
 module.exports = {
   plugins: [
+    {
+      plugin: CracoAlias,
+      options: {
+        source: 'tsconfig',
+        baseUrl: './',
+        tsConfigPath: './tsconfig.extend.json'
+      }
+    },
     {
       plugin: CracoLessPlugin,
       options: {
@@ -16,12 +25,12 @@ module.exports = {
               '@breadcrumb-icon-font-size': 'ceil(@font-size-base * 1.42)',
               '@breadcrumb-link-color': '#fff',
               '@breadcrumb-link-color-hover': 'rgba(255, 255, 255, 0.6)',
-              '@breadcrumb-separator-color': '#fff',
+              '@breadcrumb-separator-color': '#fff'
             },
-            javascriptEnabled: true,
-          },
-        },
-      },
-    },
-  ],
+            javascriptEnabled: true
+          }
+        }
+      }
+    }
+  ]
 }

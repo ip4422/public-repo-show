@@ -1,8 +1,8 @@
 import React from 'react'
 import { Empty, Spin } from 'antd'
 
-import { Repo } from '../../store'
-import { RepoCard } from '../../components'
+import { Repo } from '@root/store'
+import { RepoCard } from '@root/components'
 
 interface RepoListProps {
   repos: Repo[]

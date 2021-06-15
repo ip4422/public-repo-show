@@ -2,7 +2,7 @@ import React from 'react'
 import { List } from 'antd'
 import { FolderFilled, FileOutlined } from '@ant-design/icons'
 
-import { RepoContent, RepoContetItemType } from '../../store'
+import { RepoContent, RepoContetItemType } from '@root/store'
 
 export const RepoItem = ({ name, type }: RepoContent): JSX.Element => {
   return (

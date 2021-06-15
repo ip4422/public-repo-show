@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
-import { fetchRepos, LoadingStatus } from '../../store'
-import { useAppDispatch, useAppSelector } from '../../utils/hooks'
+import { fetchRepos, LoadingStatus } from '@root/store'
+import { useAppDispatch, useAppSelector } from '@root/utils/hooks'
 import { Header } from './'
-import { getRouteParams } from '../../helpers'
+import { getRouteParams } from '@root/helpers'
 
 export const HeaderContainer = (): JSX.Element => {
   const dispatch = useAppDispatch()

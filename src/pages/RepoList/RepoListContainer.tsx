@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { RepoList } from './'
-import { LoadingStatus } from '../../store'
-import { useAppSelector } from '../../utils/hooks'
+import { LoadingStatus } from '@root/store'
+import { useAppSelector } from '@root/utils/hooks'
 
 export const RepoListContainer = () => {
   const repos = useAppSelector(state => state.repos.repos || [])
