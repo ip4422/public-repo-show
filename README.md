@@ -1,5 +1,7 @@
 # displaying Github user's public repositories
 
+[Demo: https://ip4422.github.io/public-repo-show](https://ip4422.github.io/public-repo-show 'displaying Github user\'s public repositories')
+
 Simple website using ReactJS + Typescript, that would allow displaying Github user's public repositories.
 
 1. The main page should have an input and allow a user to enter Github's username
