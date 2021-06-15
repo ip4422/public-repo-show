@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 
-import RepoList from './RepoList'
+import { RepoList } from '../'
 
 const defaultProps = {
   repos: [

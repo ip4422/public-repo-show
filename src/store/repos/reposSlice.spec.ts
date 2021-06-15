@@ -1,11 +1,12 @@
-import reducer, {
+import {
+  repos as reducer,
   fetchRepos,
   fetchRepoContent,
   fetchRepoReadme,
   LoadingStatus,
   RepoContetItemType,
   initialState
-} from './repos.duck'
+} from './reposSlice'
 
 const repoContent = [
   {

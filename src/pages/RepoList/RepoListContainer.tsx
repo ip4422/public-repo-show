@@ -1,8 +1,8 @@
 import React from 'react'
 
-import RepoList from './RepoList'
-import { LoadingStatus } from '../../ducks'
-import { useAppSelector } from '../../app/hooks'
+import { RepoList } from './'
+import { LoadingStatus } from '../../store'
+import { useAppSelector } from '../../utils/hooks'
 
 export const RepoListContainer = () => {
   const repos = useAppSelector(state => state.repos.repos || [])
@@ -15,5 +15,3 @@ export const RepoListContainer = () => {
 
   return <RepoList repos={repos} loading={loading} />
 }
-
-export default RepoListContainer

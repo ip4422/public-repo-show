@@ -13,7 +13,12 @@ interface HeaderProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Header = ({ onSearch, userId, loading, onChange }: HeaderProps) => {
+export const Header = ({
+  onSearch,
+  userId,
+  loading,
+  onChange
+}: HeaderProps) => {
   return (
     <Layout.Header>
       <Row justify='start' align='middle' gutter={32}>
@@ -50,5 +55,3 @@ const Header = ({ onSearch, userId, loading, onChange }: HeaderProps) => {
     </Layout.Header>
   )
 }
-
-export default Header

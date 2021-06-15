@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 
-import { RepoCard } from './RepoCard'
+import { RepoCard } from './'
 
 it('should render Empty Card component', async () => {
   const history = createMemoryHistory()

@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import repos from '../ducks/repos.duck'
+import { repos } from '../store'
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     repos
   },
@@ -12,5 +12,3 @@ const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {repos: ReposState}
 export type AppDispatch = typeof store.dispatch
-
-export default store

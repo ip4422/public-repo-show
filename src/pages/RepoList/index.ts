@@ -1,2 +1,2 @@
-export { RepoList } from './RepoList'
-export { RepoListContainer } from './RepoListContainer'
+export * from './RepoList'
+export * from './RepoListContainer'

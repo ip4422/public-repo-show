@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import repos, { ReposState } from '../ducks/repos.duck'
+import { repos, ReposState } from '../store'
 
 const middlewareEnhancer = applyMiddleware(thunkMiddleware)
 

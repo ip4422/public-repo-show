@@ -2,9 +2,9 @@ import React from 'react'
 import { List } from 'antd'
 import { FolderFilled, FileOutlined } from '@ant-design/icons'
 
-import { RepoContent, RepoContetItemType } from '../../ducks'
+import { RepoContent, RepoContetItemType } from '../../store'
 
-const RepoItem = ({ name, type }: RepoContent):JSX.Element => {
+export const RepoItem = ({ name, type }: RepoContent): JSX.Element => {
   return (
     <List.Item>
       <List.Item.Meta
@@ -20,5 +20,3 @@ const RepoItem = ({ name, type }: RepoContent):JSX.Element => {
     </List.Item>
   )
 }
-
-export default RepoItem

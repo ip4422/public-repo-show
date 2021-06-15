@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { fetchRepoContent, fetchRepoReadme, LoadingStatus } from '../../ducks'
-import { RepoContent } from '../../ducks'
-import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import Repo from './Repo'
+import { fetchRepoContent, fetchRepoReadme, LoadingStatus } from '../../store'
+import { RepoContent } from '../../store'
+import { useAppSelector, useAppDispatch } from '../../utils/hooks'
+import { Repo } from './'
 import { RouteParams } from '../../helpers'
 
-const RepoContainer = () => {
+export const RepoContainer = () => {
   const dispatch = useAppDispatch()
   const items = useAppSelector(
     state => state.repos.repoContent || ([] as RepoContent[])
@@ -32,5 +32,3 @@ const RepoContainer = () => {
     <Repo items={items} header={repoId} readme={readme} loading={loading} />
   )
 }
-
-export default RepoContainer

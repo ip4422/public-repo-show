@@ -1,4 +1,4 @@
-import { getRouteParams } from './routerHelpers'
+import { getRouteParams } from './'
 
 describe('checking for different routes', () => {
   it('should return two undefined id', () => {

@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
-import RepoListContainer from './RepoListContainer'
-import { initialState } from '../../ducks'
+import { RepoListContainer } from '../'
+import { initialState } from '../../../store'
 
 const repoContent = [
   {

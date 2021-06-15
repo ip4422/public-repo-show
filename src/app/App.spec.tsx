@@ -6,8 +6,8 @@ import { Provider } from 'react-redux'
 import { ThunkMiddleware } from '@reduxjs/toolkit'
 import configureMockStore from 'redux-mock-store'
 
-import { initialState } from './ducks'
-import App from './App'
+import { initialState } from '../store'
+import { App } from './'
 
 const mockStore = configureMockStore(ThunkMiddleware)
 

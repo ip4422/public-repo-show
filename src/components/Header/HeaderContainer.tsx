@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
-import { fetchRepos, LoadingStatus } from '../../ducks'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import Header from './Header'
+import { fetchRepos, LoadingStatus } from '../../store'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks'
+import { Header } from './'
 import { getRouteParams } from '../../helpers'
 
-const HeaderContainer = (): JSX.Element => {
+export const HeaderContainer = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const loading = useAppSelector(
     state => state.repos.reposLoading === LoadingStatus.pending
@@ -43,5 +43,3 @@ const HeaderContainer = (): JSX.Element => {
     />
   )
 }
-
-export default HeaderContainer

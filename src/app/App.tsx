@@ -2,12 +2,10 @@ import React from 'react'
 import './App.less'
 import { Layout } from 'antd'
 
-import { HeaderContainer } from './components'
-import { ROUTES, ApplicationRoutes } from './config/routes'
+import { HeaderContainer } from '../components'
+import { ROUTES, ApplicationRoutes } from './'
 
-function App() {
-  // TODO: add favicon
-
+export function App() {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <HeaderContainer />
@@ -22,5 +20,3 @@ function App() {
     </Layout>
   )
 }
-
-export default App

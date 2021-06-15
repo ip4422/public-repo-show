@@ -23,5 +23,3 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps): JSX.Element => {
     </Breadcrumb>
   )
 }
-
-export default Breadcrumbs

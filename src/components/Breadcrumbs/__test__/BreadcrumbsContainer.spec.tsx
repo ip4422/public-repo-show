@@ -3,24 +3,20 @@ import { render, screen } from '@testing-library/react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 
-import Breadcrumbs from './Breadcrumbs'
+import { BreadcrumbsContainer } from '../'
 
 it('should render breadcrumbs correctly', () => {
   const history = createMemoryHistory()
-  const props = {
-    items: [
-      { href: 'href1', title: 'title1' },
-      { href: 'href2', title: 'title2' }
-    ]
-  }
+  const route = '/ip4422/shop-app'
+  history.push(route)
   render(
     <Router history={history}>
-      <Breadcrumbs {...props} />
+      <BreadcrumbsContainer />
     </Router>
   )
-  let linkElement = screen.getByRole('link', { name: props.items[0].title })
+  let linkElement = screen.getByRole('link', { name: 'ip4422' })
   expect(linkElement).toBeInTheDocument()
 
-  linkElement = screen.getByRole('link', { name: props.items[1].title })
+  linkElement = screen.getByRole('link', { name: 'shop-app' })
   expect(linkElement).toBeInTheDocument()
 })

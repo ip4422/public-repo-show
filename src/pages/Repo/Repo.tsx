@@ -3,8 +3,8 @@ import { List, Typography, Card, Empty, Spin } from 'antd'
 import ReactMarkdown from 'react-markdown'
 import './repo.css'
 
-import { RepoContent } from '../../ducks'
-import RepoItem from './RepoItem'
+import { RepoContent } from '../../store'
+import { RepoItem } from './'
 
 interface RepoProps {
   header?: string
@@ -13,7 +13,7 @@ interface RepoProps {
   loading?: boolean
 }
 
-const Repo = ({
+export const Repo = ({
   items = [],
   header = '',
   readme = '',
@@ -42,5 +42,3 @@ const Repo = ({
     </Spin>
   )
 }
-
-export default Repo

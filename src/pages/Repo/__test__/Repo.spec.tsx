@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { RepoContetItemType } from '../../ducks'
-import Repo from './Repo'
+import { RepoContetItemType } from '../../../store'
+import { Repo } from '../'
 
 const repoItems = [
   {

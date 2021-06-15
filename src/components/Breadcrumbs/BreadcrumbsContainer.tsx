@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import Breadcrumbs, { BreadcrumbsItem } from './Breadcrumbs'
+import {Breadcrumbs, BreadcrumbsItem } from './'
 
 export const BreadcrumbsContainer = (): JSX.Element => {
   const [items, setItems] = useState([] as BreadcrumbsItem[])
@@ -26,5 +26,3 @@ export const BreadcrumbsContainer = (): JSX.Element => {
 
   return <Breadcrumbs items={items} />
 }
-
-export default BreadcrumbsContainer

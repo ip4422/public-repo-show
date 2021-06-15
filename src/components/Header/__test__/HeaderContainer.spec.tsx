@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
-import { storeFactory } from '../../utils/testUtils'
-import HeaderContainer from './HeaderContainer'
+import { storeFactory } from '../../../utils/testUtils'
+import { HeaderContainer } from '../'
 
 const repoContent = [
   {

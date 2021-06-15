@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
 
-import Header from './Header'
+import { Header } from '../'
 
 const mockStore = configureMockStore()
 const history = createMemoryHistory()

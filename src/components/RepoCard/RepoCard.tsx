@@ -24,5 +24,3 @@ export const RepoCard = (props: CardProps): JSX.Element => {
     </Card>
   )
 }
-
-export default RepoCard

@@ -1,9 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import RepoItem from './RepoItem'
+import { RepoItem } from '../'
 
 describe('rendering RepoContent without errors', () => {
-
   it('should render RepoItem without any props without errors', () => {
     render(<RepoItem />)
   })

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Empty, Spin } from 'antd'
 
-import { Repo } from '../../ducks'
+import { Repo } from '../../store'
 import { RepoCard } from '../../components'
 
 interface RepoListProps {
@@ -30,5 +30,3 @@ export const RepoList = ({
     </Spin>
   )
 }
-
-export default RepoList

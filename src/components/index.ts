@@ -1,3 +1,3 @@
-export { RepoCard } from './RepoCard'
-export { BreadcrumbsContainer } from './Breadcrumbs'
-export { HeaderContainer } from './Header'
+export * from './RepoCard'
+export * from './Breadcrumbs'
+export * from './Header'
