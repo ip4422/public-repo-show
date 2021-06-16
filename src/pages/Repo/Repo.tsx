@@ -6,6 +6,16 @@ import './repo.css'
 import { RepoContent } from '@root/store'
 import { RepoItem } from './'
 
+/**
+ * Interface for Repo component
+ * @typedef RepoProps
+ * @type {object}
+ * @param {string} header - repository name
+ * @param {string} readme - readme formatted content
+ * @param {string} loading - loading flag
+ * @param {RepoContent[]} items - repository content files and folder names
+ * with content type flag ('file' | 'dir')
+ */
 interface RepoProps {
   header?: string
   items: RepoContent[]
@@ -13,6 +23,9 @@ interface RepoProps {
   loading?: boolean
 }
 
+/**
+ * Draw repository content and readme content
+ */
 export const Repo = ({
   items = [],
   header = '',

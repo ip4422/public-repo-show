@@ -6,6 +6,16 @@ import './header.css'
 
 import { BreadcrumbsContainer } from '../'
 
+/**
+ * Interface for Header component
+ * @typedef HeaderProps
+ * @type {object}
+ * @property {string} userId - userId for search input
+ * @property {boolean} loading - loading flag
+ * @property {function} onSearch - handling search event for fetch repos
+ * @property {function} onChange - handling change event for storing userId
+ *
+ */
 interface HeaderProps {
   onSearch: (value: string) => void
   userId?: string
@@ -13,6 +23,13 @@ interface HeaderProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
+/**
+ * Show Header with search input and breadcrumbs
+ * @param {function} onSearch - handler for userId repo list fetching
+ * @param {string} userId - user for repositories list
+ * @param {boolean} loading - loading flag
+ * @param {function} onChange - handler for storing userId value
+ */
 export const Header = ({
   onSearch,
   userId,
@@ -33,7 +50,6 @@ export const Header = ({
               <Input.Search
                 placeholder="Github's username"
                 style={{ display: 'block' }}
-                // loading/
                 loading={loading}
                 value={userId}
                 onSearch={onSearch}

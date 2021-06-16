@@ -4,6 +4,9 @@ import { FolderFilled, FileOutlined } from '@ant-design/icons'
 
 import { RepoContent, RepoContetItemType } from '@root/store'
 
+/**
+ * Item of repository content  with file or folder icon depends on item type
+ */
 export const RepoItem = ({ name, type }: RepoContent): JSX.Element => {
   return (
     <List.Item>

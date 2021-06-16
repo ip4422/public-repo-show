@@ -4,11 +4,21 @@ import { Empty, Spin } from 'antd'
 import { Repo } from '@root/store'
 import { RepoCard } from '@root/components'
 
+/**
+ * Interface for RepoList component
+ * @typedef RepoListProps
+ * @type {object}
+ * @param {Repo[]} repos - array of repositories info
+ * @param {string} loading - loading flag
+ */
 interface RepoListProps {
   repos: Repo[]
   loading: boolean
 }
 
+/**
+ * List or repositories names and descripsions with links to its content
+ */
 export const RepoList = ({
   repos = [],
   loading = false

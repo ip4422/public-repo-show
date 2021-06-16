@@ -4,6 +4,9 @@ import { RepoList } from './'
 import { LoadingStatus } from '@root/store'
 import { useAppSelector } from '@root/utils/hooks'
 
+/**
+ * Preparing repository list for presentational component
+ */
 export const RepoListContainer = () => {
   const repos = useAppSelector(state => state.repos.repos || [])
   const loading = useAppSelector(

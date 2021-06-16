@@ -7,6 +7,10 @@ import { useAppSelector, useAppDispatch } from '@root/utils/hooks'
 import { Repo } from './'
 import { RouteParams } from '@root/helpers'
 
+/**
+ * Preparing repository content and readme content. Fetch repository content
+ * and readme content on route change
+ */
 export const RepoContainer = () => {
   const dispatch = useAppDispatch()
   const items = useAppSelector(

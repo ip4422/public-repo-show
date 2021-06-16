@@ -7,6 +7,11 @@ import { Header } from './'
 import { getRouteParams } from '@root/helpers'
 import { ROOT_PATH } from '@root/config/constants'
 
+/**
+ * Container component for Header
+ * responsible for parsing path and pass it to children userId and
+ * onChange, onSearch handlers
+ */
 export const HeaderContainer = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const loading = useAppSelector(
