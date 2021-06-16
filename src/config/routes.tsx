@@ -1,5 +1,9 @@
 import { RepoListContainer } from '../pages'
 import { RepoContainer } from '../pages'
+import { ROOT_PATH } from './constants'
+
+export const REPOS_ROOT_KEY = 'REPOS_ROOT_KEY'
+export const REPO_PAGE_KEY = 'REPO_PAGE_KEY'
 
 /**
  * @typedef RouteItem
@@ -29,20 +33,27 @@ export interface RoutesProps {
   routes: RouteItem[]
 }
 
-export const REPOS_ROOT_KEY = 'REPOS_ROOT_KEY'
-export const REPO_PAGE_KEY = 'REPO_PAGE_KEY'
-
 /**
  *  All application routes
  * @type {RouteItem[]}
  */
 export const ROUTES: RouteItem[] = [
-  { path: '/', key: 'APP_ROOT', exact: true, component: RepoListContainer },
   {
-    path: '/:userId',
+    path: `${ROOT_PATH}/`,
+    key: 'APP_ROOT',
+    exact: true,
+    component: RepoListContainer
+  },
+  {
+    path: `${ROOT_PATH}/:userId`,
     exact: true,
     key: REPOS_ROOT_KEY,
     component: RepoListContainer
   },
-  { path: '/:userId/:repoId', key: REPO_PAGE_KEY, component: RepoContainer }
+  {
+    path: `${ROOT_PATH}/:userId/:repoId`,
+    exact: true,
+    key: REPO_PAGE_KEY,
+    component: RepoContainer
+  }
 ]

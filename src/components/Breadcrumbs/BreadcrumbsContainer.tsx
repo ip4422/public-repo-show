@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import {Breadcrumbs, BreadcrumbsItem } from './'
+import { Breadcrumbs, BreadcrumbsItem } from './'
+
+import { ROOT_PATH } from '@root/config/constants'
 
 export const BreadcrumbsContainer = (): JSX.Element => {
   const [items, setItems] = useState([] as BreadcrumbsItem[])
@@ -10,8 +12,11 @@ export const BreadcrumbsContainer = (): JSX.Element => {
     const pathes = location.pathname.split('/').filter(item => item !== '')
     let pointer = 0
     const breadcrumbsItems: BreadcrumbsItem[] = [] as BreadcrumbsItem[]
+    if (ROOT_PATH && `/${pathes[pointer]}` === ROOT_PATH) {
+      pathes.shift()
+    }
     while (pointer < pathes.length) {
-      let path = ''
+      let path = ROOT_PATH ? ROOT_PATH : ''
       for (let i = 0; i <= pointer; i++) {
         path += '/' + pathes[i]
       }

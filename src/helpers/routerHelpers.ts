@@ -1,5 +1,5 @@
 import { matchPath } from 'react-router-dom'
-import { ROUTES, REPO_PAGE_KEY, REPOS_ROOT_KEY } from '../config/routes'
+import { ROUTES, REPO_PAGE_KEY, REPOS_ROOT_KEY } from '@root/config/routes'
 
 /**
  * All known params for application routes

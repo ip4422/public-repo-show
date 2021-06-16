@@ -6,11 +6,11 @@ import { Router } from 'react-router-dom'
 import { store } from '@root/app'
 import { RepoContainer } from '../'
 import { RepoContetItemType } from '@root/store'
+import { ROOT_PATH } from '@root/config/routes'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
-  useParams: () => ({ userId: 'userIdRoute', repoId: 'repoIdRoute' }),
-  useRouteMatch: () => ({ url: '/userIdRoute/repoIdRoute' })
+  useParams: () => ({ userId: 'userIdRoute', repoId: 'repoIdRoute' })
 }))
 
 const repoContent = [
@@ -25,7 +25,7 @@ const repoContent = [
 ]
 
 const readMeContent = 'content of readme file'
-const repoRoute = '/userIdRoute/repoIdRoute'
+const repoRoute = `${ROOT_PATH}/userIdRoute/repoIdRoute`
 const readmeHeader = 'REAMDE.md'
 
 const renderRepoContainer = state => {

@@ -5,6 +5,7 @@ import { fetchRepos, LoadingStatus } from '@root/store'
 import { useAppDispatch, useAppSelector } from '@root/utils/hooks'
 import { Header } from './'
 import { getRouteParams } from '@root/helpers'
+import { ROOT_PATH } from '@root/config/constants'
 
 export const HeaderContainer = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -17,7 +18,7 @@ export const HeaderContainer = (): JSX.Element => {
 
   const handleSearch = (value: string) => {
     // fetch dispatched on location change
-    history.push(`/${value}`)
+    history.push(`${ROOT_PATH}/${value}`)
   }
 
   useEffect(() => {

@@ -4,10 +4,11 @@ import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 
 import { BreadcrumbsContainer } from '../'
+import { ROOT_PATH } from '@root/config/constants'
 
 it('should render breadcrumbs correctly', () => {
   const history = createMemoryHistory()
-  const route = '/ip4422/shop-app'
+  const route = `${ROOT_PATH}/ip4422/shop-app`
   history.push(route)
   render(
     <Router history={history}>
