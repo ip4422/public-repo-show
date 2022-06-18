@@ -1,6 +1,6 @@
 # displaying Github user's public repositories
 
-[Demo: https://ip4422.github.io/public-repo-show/ip4422](https://ip4422.github.io/public-repo-show/ip4422 'displaying Github user\'s public repositories')
+[Demo: https://ip4422.github.io/public-repo-show](https://ip4422.github.io/public-repo-show 'displaying Github user\'s public repositories')
 
 Simple website using ReactJS + Typescript, that would allow displaying Github user's public repositories.
 
